@@ -1,0 +1,43 @@
+DATABASE is a collection of data in a structured query format that can be easily stored and accessable digitally.
+
+An application that used to manage our DATABASE is known as DBMS(DATABASE Management system)
+
+SQL =  Structured query language is a programming language that is used to interact with relational databases.
+
+There are Two Type of databases
+Structured databases/ relational DB             NON-relationalDB
+MY SQL                                          MONGODB
+PostgresSQl                                     Redis
+Oracale                                         Apache Cassandra
+Microsoft SQL Server
+
+SQL is a programming language used to interact with relationalDB.
+
+Every database used to perform CRUD Operations :
+Create Read Update Delete
+
+SQL is not case-sensitive so no worries to use either uppercase or lowercase but we prefer to use upper case for atleast command
+
+SQL dataTypes
+
+SIGNED                              UNSIGNED
+where we want to store -values      where we don't want any -values
+
+syntax TinyInt UNSIGNED (0-255)         TinyInt rValue (-128 to 127 )
+
+Types of SQL command
+
+DDL (DATA Defination language):-        CREATE, ALTER, RENAME, TRUNCATE, DROP
+DQL (DATA QUERY LANGUAGE):-             SELECT
+DML (DATA MANIPULATION LANGUAGE):-      INSERT, UPDATE, DELETE
+DCL (DATA CONTROL LANGUAGE):-           GRANT, REVOKE   (FOR USER PERMISSION USES)
+TCL (TRANSACTION CONTROL LANGUAGE):-    START TRANSACTION, COMMIT, ROLLBACK
+
+ **************************** ORDER OF SYNTAX USES ************************
+
+ SELECT             column(s)
+ FROM               table_name
+ WHERE              condition
+ GROUP BY           column(s)
+ HAVING             condition
+ ORDER BY           column(s)ASC;
