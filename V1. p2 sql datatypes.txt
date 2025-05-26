@@ -1,0 +1,36 @@
+In SQL, datatypes define the kind of values that can be stored in a column.
+Here are the main categories of SQL data types:
+
+Numeric Types: Used for storing numbers.
+
+INT: Integer values.    (Numbers) (-2,14,74,83,648 to 2,14,74,83,647)
+TINYINT: Integer values.    (Numbers) (-128 to 127)
+BIGINT  Big Integer values. (-92,23,37,20,36,85,47,75,808 to 92,23,37,20,36,85,47,75,807)
+FLOAT: Decimal Numbers - with precision to 23 digits.
+DECIMAL: Fixed-point numbers with precision.
+BIT: can store x-bit value. x can range from 1 to 64
+DOUBLE: Decimal Number with 24 to 53 digits. 
+
+Character Types: Used for storing text.
+
+CHAR(n): Fixed-length character strings. Always uses 'n' bytes. (0 - 255)
+VARCHAR(n): Variable-length character strings. Uses only the number of bytes
+needed for the actual string. (0 to 255)
+BLOB: Can store binary large object.    (0 to 65535) 
+
+Date and Time Types: Used for storing date and time values.
+
+DATE: Stores dates (year, month, day). (YYYY-MM-DD) (1001-01-01 to 9999-12-31)
+TIME: Stores time (hour, minute, second).
+DATETIME: Combines date and time.
+YEAR: year in 4 digit format ranging from 1901 to 2155
+
+Binary Types: Used for storing binary data.
+
+BINARY(n): Fixed-length binary data.
+VARBINARY(n): Variable-length binary data.
+
+Boolean: Used for storing true/false values (0 or 1).
+
+Understanding these data types is crucial for defining tables and ensuring data
+integrity in a database.
