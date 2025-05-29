@@ -1,0 +1,74 @@
+***************************** COMMANDS *****************************
+
+Best practices are to not through error in DATABASE but warnings are ok!
+
+CREATE database College;                     to create new DB
+CREATE database if not exist College; **     to create newDB if not exist W/sameName
+DROP database College;                       to delete DB
+DROP database if exists College;   **        to delete DB if exist sameName in DB
+DROP TABLE College;                          to delete table from DB 
+USE College;                                 to choose DB for working directory
+SHOW DATABASES;                              to show all existing DB in DBMS
+SHOW TABLES;                                 to show all existing tables in DB
+SET SQL_SAFE_UPDATE = 0;                     to close safe mode
+UPDATE student set marks = marks + 1;        to update existing row
+DELETE FROM student WHERE marks < 30;        to delete existing row ** use with caution
+
+Table Related Queries
+
+CREATE table student(               SYNTAX FOR CREATING TABLE SCHEMA    
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    age INT NOT NULL
+);
+
+TO INSERT DATA IN TABLE ----------------------------
+
+for single values  -------------------
+INSERT INTO student values(1, "nIZAM", 21);
+
+for multiple  -----------------------
+INSERT into student 
+(rollno, name)
+values
+(101, "nIZAM"),
+(102, "shradha"),
+(103, "Captan cool");
+
+PRINT ALL TABLE DATA   ---------------------
+SELECT * FROM STUDENT;                              
+
+***************************** Table related query *****************************
+
+UPDATE  to update existing row
+
+UPDATE student
+SET grade = "0"
+WHERE grade = "A";
+
+
+ALTER   to change the schema (SCHEMA means design, which are col datatype & constraint)
+
+ADD column
+ALTER TABLE table_name
+ADD COLUMN column_name  datatype constraint;
+
+DROP column
+ALTER TABLE table_name
+DROP COLUMN column_name;
+
+RENAME TABLE
+ALTER TABLE table_name
+RENAME TO new_table_name;
+
+CHANGE column (rename)
+ALTER TABLE table_name
+CHANGE COLUMN oldName newName new_dataType newConstraint;
+
+MODIFY COLUMN (modify datatyp / constraint)
+ALTER TABLE table_name
+MODIFY column_name new_dataType newConstraint;
+
+(DROP delete whole table TRUNCATE deletes table data only table structure still alive)
+TRUNCATE  to delete table data 
+TRUNCATE TABLE student;
