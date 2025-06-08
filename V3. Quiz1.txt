@@ -11,4 +11,8 @@ INSERT into SALARYledger
 values
 (101, "nIZAM", 2000000),
 (102, "shradha", 120000),
+<<<<<<< HEAD
 (103, "captain cool", 150000);
+=======
+(103, "captain cool", 150000);
+>>>>>>> 44854a06cbb8c94a25676fc45a3515a6b56801a8
