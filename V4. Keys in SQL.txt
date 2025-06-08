@@ -1,0 +1,115 @@
+KEY's in SQL?
+In SQL, keys are essential components used to identify and manage data within tables. 
+
+There are two types of key in SQL
+1. PRIMARY KEY
+2. FOREIGN KEY
+
+******************************* PRIMARY KEY ******************************* 
+
+it is a column (or set of column) in a table that uniquely identifies each row as unique id.
+there should only 1 PRIMARYKEY (PK) in a table for unique targeting
+it should NOT NULL      (if we want unique id how could null data be present)
+
+
+
+******************************* FOREIGN KEY *******************************
+
+a foreign key is a column (or set of columns) in a table that refers to the primary key
+There could be multiple foreign keys (Fks).
+Fks have duplicate and null values
+
+
+
+
+    CONSTRAINTS
+SQL constraints are used to specify rules for data in table.
+
+SYNTAX KEY                      USES                            SYNTAX
+
+NOT NULL        column cannot have a null value         col1 INT NOT NULL;
+UNIQUE          all values in column are different      col2 INT UNIQUE;
+PRIMARY KEY     make col unique & not null(once used)   id INT PRIMARY KEY;
+DEFAULT         sets the default value of a column      salary INT DEFAULT 25000;
+CHECK           it can limit value allowed in column    age INT CHECK (age >=18);
+DISTINCT        filters and select only unique value    SELECT DISTINCT city FROM College;
+WHERE           to define some filter condition         SELECT * FROM city WHERE marks > 80;
+
+
+************************** Example Code *************************
+CREATE TABLE temp(
+    id INT NOT NULL,
+    PRIMARY KEY (id)
+);
+
+
+
+---------------- For Combination of unique key ----------------
+
+CREATE TABLE temp(
+    id INT,
+    name VARCHAR(50),
+    age INT,
+    PRIMARY KEY (id, age)
+);
+
+
+
+---------------- For foreign constraints -----------------
+FOREIGN KEY prevents action that would destroy link between tables
+
+CREATE TABLE temp(
+    cust_id int,
+    FOREIGN KEY (cust_id) references customer(id)
+); 
+
+Revisiting Fks
+
+CREATE TABLE dept(                      // parent table
+    id INT PRIMARY KEY,
+    name VARCHAR (50)
+);
+CREATE TABLE teacher(                   // child table due to Fks used
+    id INT PRIMARY KEY,
+    name VARCHAR (50),
+    dept_id INT,
+    FOREIGN KEY (dept_id) references dept(id)
+);
+
+ctrl + r            for  reverse engineering the table 
+
+
+
+******************** Cascading in FOREIGN KEY *********************
+on delete Cascade
+    when we create a foreign key using this option, it delete the refrencing rows
+    in the child table when the referenced row is deleted in the parent table
+    which has the primary key.
+
+on update cascade
+    when we create a foreign key using update cascade the referencing row are updated
+    in the child table when the referenced row is updated in the parent table which 
+    has a primary key.
+
+CREATE TABLE student (
+    id INT PRIMARY KEY,
+    courseId INT,
+    FOREIGN KEY (courseId) REFERENCES course(id),
+    ON DELETE CASCADE,
+    ON UPDATE CASCADE
+);
+
+
+
+---------------- Select in detail -----------------------
+it is used to selet and data from database
+
+SELECT col1, col2 FROM temp;            SYNTAX
+
+SELECT * FROM temp;                     to select all from particular db
+
+
+
+
+
+
