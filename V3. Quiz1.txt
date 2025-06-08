@@ -1,0 +1,14 @@
+CREATE DATABASE NIZAMLIMITED;
+USE NIZAMLIMITED;
+CREATE TABLE SALARYledger(
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    salary INT NOT NULL UNSIGNED
+);
+
+INSERT into SALARYledger
+(id, name, salary)
+values
+(101, "nIZAM", 2000000),
+(102, "shradha", 120000),
+(103, "captain cool", 150000);
