@@ -1,0 +1,72 @@
+----------------------- WHERE Clause -----------------------
+WHERE Clause for rows
+
+Arithmatic operators **
++(addition) -(substraction) /(division) *(multiplication) %(modulus - reminder gives)
+
+Comparision operators   **
+= (equal to) != (not equal to)  > , < , >= , <=
+
+Logical operators   **
+AND, OR, NOT, IN, BETWEEN, ALL, LIKE, ANY
+
+Bitwise operators   **
+& (Bitwise AND),    | (Bitwise OR)
+
+AND (to check both conditions are true)
+SELECT * FROM student WHERE marks > 80 AND city = "mumbai";
+
+OR (to check one of the condition to be true)
+SELECT * FROM student WHERE marks > 80 OR city = "mumbai";
+
+BETWEEN (select from a given range)
+SELECT * FROM student WHERE marks BETWEEN 80 AND 90;
+
+IN (matches any value in the list)
+SELECT * FROM student WHERE city IN ("Delhi" , "Mumbai");
+
+NOT (to negate/ignore the give condition)
+SELECT * FROM student WHERE city NOT IN ("Delhi" , "Mumbai");
+
+
+
+
+-----------------------     LIMIT Clause    -----------------------
+
+set an upper limit on number of rows to be returned
+
+SELECT * FROM student LIMIT 3;      it will only return 3 student list due to limit
+SELECT marks, name FROM student LIMIT 3;         another typeof SYNTAX
+
+
+
+-----------------------     ORDER by Clause     -----------------------
+to sort in Ascending (ASC) / Descending (DESC) order
+
+SELECT * FROM student ORDER BY city ASC;             to get in ASC order
+SELECT name, city FROM student ORDER BY ASC;         another typeof SYNTAX
+
+
+
+
+-----------------------     Group by Clause     -----------------------
+Group rows with same values into summary row
+it collect data from multiple records and group the result by one or more column
+
+*Generally we group with some aggregation Function
+
+SELECT city, COUNT(name) FROM student GROUP BY city;
+
+
+
+-----------------------     HAVING Clause       -----------------------
+similar to where i.e applie some condition on rows
+used when we want to apply some condition after grouping.
+HAVING Clause for groups
+
+count no of student in each city where marks cross 90.
+
+SELECT count(name), city
+FROM student
+GROUP BY city
+HAVING MAX(marks) > 90;
