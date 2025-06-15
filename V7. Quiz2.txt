@@ -1,0 +1,25 @@
+CREATE DATABASE payment_Details;
+USE payment_Details;
+
+CREATE TABLE payment(
+    cust_id INT PRIMARY KEY,
+    customer VARCHAR(80),
+    modeOF_Payement VARCHAR(80),
+    city VARCHAR(50)
+);
+
+INSERT INTO payment
+(cust_id, customer, modeOF_Payment, city)
+values
+(101, "olivia", "NETBANKING", "portland"),
+(102, "ethan", "CREDIT CARD", "miami"),
+(103, "maya", "CREDIT CARD", "seattle"),
+(104, "liam", "NETBANKING", "denver"),
+(105, "sophia", "CREDIT CARD", "NEW ORLEANS"),
+(106, "caleb", "DEBIT CARD", "meniapolis"),
+(107, "ava patel", "DEBIT CARD", "phonix"),
+(108, "lucas", "NETBANKING", "boston"),
+(109, "isabella", "NETBANKING", "nashville"),
+(110, "jasckson", "CREDIT CARD", "boston");
+
+SELECT modeOF_Payment, count(modeOF_Payment) FROM payment GROUP BY modeOF_Payment;
