@@ -1,0 +1,159 @@
+*********************  Joins in SQL  ********************
+Joins in SQL use to combine rows from two or more tables, based on a related 
+column between them.
+
+There are 4 typeof Joins
+Inner Join      // common data in both table
+Left Join       // return all data from left and matched only from right { outer Join }
+Right Join      //return all data from right and matched only from left { outer Join }
+Full Join       //return all data from both and matched once { outer Join }
+
+
+Inner Join **
+Returns records that have matching value in both tables.
+
+SYNTAX
+
+SELECT columns
+FROM tableA
+INNER JOIN tableB
+ON tableA.column_name = tableB.column_name;
+
+create table studentList(
+	rollno int primary key,
+    name varchar(50)
+);
+
+create table course(
+	id int primary key,
+    courseName varchar(50)
+);
+
+insert into studentList
+(rollno, name)
+values
+(11, "payal"),
+(12, "krutika"),
+(13, "kashvi"),
+(14, "harshi"),
+(15, "bacchu"),
+(16, "sherlock");
+
+insert into course
+(id, courseName)
+values
+(11, "englis"),
+(12, "computer"),
+(22, "science"),
+(14, "hindi"),
+(24, "sst"),
+(16, "moralScience");
+
+SELECT * 
+FROM studentList 
+INNER JOIN course
+ON studentList.rollno = course.id;
+
+SELECT * 
+FROM studentList 
+LEFT JOIN course
+ON studentList.rollno = course.id;
+
+SELECT * 
+FROM studentList 
+RIGHT JOIN course
+ON studentList.rollno = course.id;
+
+SELECT * 
+FROM studentList 
+LEFT JOIN course
+ON studentList.rollno = course.id
+UNION
+SELECT * 
+FROM studentList 
+RIGHT JOIN course
+ON studentList.rollno = course.id;
+
+
+
+***********************   LEFT Exclusive Join  **************************
+where left data not overlaps from right
+
+SELECT * 
+FROM studentList 
+LEFT JOIN course
+ON studentList.rollno = course.id
+WHERE course.id IS NULL;
+
+
+***********************   Right Exclusive Join  **************************
+where right data not overlaps from left 
+
+SELECT * 
+FROM studentList 
+RIGHT JOIN course
+ON studentList.rollno = course.id
+WHERE studentList.rollno IS NULL;
+
+
+***********************   FULL Exclusive Join  **************************
+where both data shown exluding overlap data between
+
+SELECT * 
+FROM studentList 
+LEFT JOIN course
+ON studentList.rollno = course.id
+WHERE course.id IS NULL
+UNION
+SELECT * 
+FROM studentList 
+RIGHT JOIN course
+ON studentList.rollno = course.id
+WHERE studentList.rollno IS NULL;
+
+
+***********************   SELF Join  **************************
+it is a regular join but the table is joined itself
+
+
+CREATE TABLE employee(
+id INT PRIMARY KEY,
+name VARCHAR (54),
+manager_id INT
+);
+
+INSERT INTO employee
+(id, name, manager_id)
+values
+(101, "adam", 103),
+(102, "sophia", 104),
+(103, "lana", NULL),
+(104, "cathey", 103);
+
+SELECT *
+FROM employee as A
+JOIN employee as b
+ON a.id = b.manager_id;
+
+SELECT a.name as manager_name, b.name
+FROM employee as a
+JOIN employee as b
+ON a.id = b.manager_id;
+
+
+********************************** UNION **************************
+it is used to combine results sets of two or more SELECT statements.
+GIVES unique records.
+
+TO use it:
+    * every employee have same no of columns
+    * columns should have similar dataTypes
+    * column in every SELECT should be in order
+    * UNION ALL Returns duplicate entries also
+
+
+    SYNTAX
+
+    SELECT columns FROM tableA
+    UNION
+    SELECT columns FROM tableb
