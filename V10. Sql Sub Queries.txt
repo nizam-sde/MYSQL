@@ -1,0 +1,59 @@
+SQL SUB Queries
+
+a subquery or inner query or a nested query is a query within another SQL query.
+it involves two select statements.
+
+Sub Queries are used inside
+ 1. SELECT
+ 2. FROM
+ 3. WHERE       ** most used in industry
+
+ SYNTAX
+
+ SELECT columns
+ FROM table_name
+ WHERE column_name operator
+ (subquery);
+
+ ------------------------  SUB QUERY EXAMPLE ---------------------
+
+ SELECT AVG(marks)
+ FROM student;
+
+ SELECT name, marks
+ FROM student
+ WHERE marks > 87;
+
+ EXACTLY TO BE LIKE that **
+
+SELECT name, marks
+ FROM student
+ WHERE marks > (SELECT AVG(marks) FROM student);
+
+WHERE example through filtering even no's   -------------************---------
+
+ SELECT name, id 
+ FROM student
+ WHERE rollno IN (
+    SELECT rollno 
+    FROM student
+    WHERE rollno % 2 = 0);
+
+
+FROM example
+when ever we use from we need to use alias      -------------************---------
+
+SELECT *
+FROM students
+WHERE city = "delhi";
+
+SELECT MAX(marks)
+FROM ( SELECT *
+FROM students
+WHERE city = "delhi" ) AS tempDelhi;
+
+
+SELECT EXAMPLE     not recommended to use        -------------************---------
+
+SELECT (SELECT max(marks) FROM student), names,
+FROM student;
