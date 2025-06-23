@@ -1,0 +1,12 @@
+MY SQL VIEWS
+A view is a virtual table  based on the result-set of an sql statement.
+
+CREATE VIEW view1 AS
+SELECT rollno, name FROM student;
+
+a view is always show up-to-date data. the database engine recreates the view,
+every time a user query hits.
+
+views are virtual - cum temporary tables it does'nt hit database its purpose is to
+view updated changes only with limited selected data either to view self or to
+share with the organisation. 
