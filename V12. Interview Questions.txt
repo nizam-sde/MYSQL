@@ -1,0 +1,322 @@
+Q1. what is the difference between dbms and rdbms?
+ANS -
+Difference between DBMS and RDBMS:
+
+DBMS (Database Management System):
+    Stores data in files or hierarchical formats.
+    Does not support relationships between data.
+    Offers limited data integrity and security.
+    Typically used for smaller applications with single users.
+    Examples: XML, Microsoft Access.
+
+RDBMS (Relational Database Management System):
+    Stores data in tables with predefined relationships with high security
+    optimized for large amount of data
+    Supports relationships using primary and foreign keys.
+    Ensures data integrity through constraints.
+    Uses SQL for querying and supports multiple users.
+
+Examples: MySQL, Oracle, SQL Server.
+
+Q2. What is a primary key & foreign key?
+ANS -
+Primary Key (PK):
+
+A primary key is a unique identifier for each record in a table.
+It ensures that no two rows have the same primary key value, maintaining data integrity.
+It facilitates efficient data retrieval by indexing records.
+
+Foreign Key (FK):
+
+A foreign key is a column in one table that references the primary key of another table.
+It establishes relationships between tables and maintains referential integrity.
+It ensures that only valid values from the referenced table can be inserted into the foreign key column.
+
+For example, in a database with Customers and Orders tables, the CustomerID in Orders is a foreign key referencing the primary key CustomerID in Customers.
+
+Q3. Constraints and there types?
+ANS-
+Constraints in Databases:
+
+Constraints are rules applied to data in a database to ensure data integrity and accuracy. They help prevent inconsistencies and ensure that data is reliable and trustworthy.
+
+There are mainly 5 Types of Constraints:
+
+Primary Key Constraint: Ensures each record in a table has a unique identifier.
+Foreign Key Constraint: Establishes relationships between tables by referencing a primary key in another table.
+Unique Constraint: Guarantees that all values in a column are unique.
+Not Null Constraint: Ensures a column cannot contain null values.
+Check Constraint: Specifies conditions that must be met for data to be valid.
+These constraints are crucial for maintaining data integrity and preventing errors in database management.
+
+Q4. DDL AND DML COMMANDS?
+ANS-
+Data Definition Language (DDL) and Data Manipulation Language (DML) are two essential subsets of SQL commands used in database management.
+
+DDL (Data Definition Language)
+DDL commands are used to define and manage the structure of database objects. Key DDL commands include:
+CREATE: Used to create new database objects (e.g., tables, indexes).
+
+EXAMPLE -   CREATE TABLE Employees (
+            EmployeeID INT,
+            FirstName VARCHAR(255),
+            LastName VARCHAR(255));
+
+            ALTER: Modifies existing database objects.
+            ALTER TABLE Employees ADD Salary INT;
+
+            DROP: Deletes database objects.
+            DROP TABLE Employees;
+
+
+DML (Data Manipulation Language)
+DML commands are focused on manipulating data within the database. Key DML commands include:
+
+SELECT: Retrieves data from one or more tables.
+
+EXAMPLE -       SELECT * FROM Employees;
+                INSERT: Adds new records to a table.
+                INSERT INTO Employees (FirstName, LastName) VALUES ('John', 'Doe');
+
+                UPDATE: Modifies existing records in a table.
+                UPDATE Employees SET Salary = 60000 WHERE EmployeeID = 1;
+
+                DELETE: Removes records from a table.
+                DELETE FROM Employees WHERE EmployeeID = 1;
+In summary, DDL is used for defining database structures, while DML is used for managing and manipulating the data within those structures.
+
+Q5. Difference between delete drop & turncate?
+ANS-
+
+DELETE, DROP, and TRUNCATE are SQL commands used for data management:
+
+DELETE: A DML command that removes specific rows from a table based on conditions. It logs each deletion, allowing for rollback if needed. Syntax: DELETE FROM table_name WHERE condition;
+
+DROP: A DDL command that removes the entire table, including its structure and data. It cannot be rolled back. Syntax: DROP TABLE table_name;
+
+TRUNCATE: A DDL command that removes all rows from a table without logging individual deletions, making it faster. It does not affect the table structure but cannot be rolled back. Syntax: TRUNCATE TABLE table_name;
+
+Each command serves different purposes based on whether you need to remove specific data, all data, or the entire table structure.
+
+
+Q6. GROUP BY vs ORDER BY clause?
+ANS-
+GROUP BY vs ORDER BY Clause:
+
+GROUP BY Clause:
+Purpose: Groups rows with similar values, often used with aggregate functions like SUM, AVG, MAX, MIN.
+Usage: Typically used to summarize data by grouping similar records together.
+Example: Grouping employees by department to calculate average salary.
+
+ORDER BY Clause:
+
+Purpose: Sorts data in ascending or descending order based on one or more columns.
+Usage: Used to arrange data in a specific order for better readability or analysis.
+Example: Sorting employees by salary in ascending order.
+
+In summary, GROUP BY is for grouping data, while ORDER BY is for sorting data. Both can be used together in a query to first group data and then sort the grouped results.
+
+
+Q7. Difference between WHERE and HAVING clause?
+ANS-
+
+Difference Between WHERE and HAVING Clauses:
+
+WHERE Clause:
+Used for row-level filtering before grouping or aggregation.
+Applies conditions to individual rows.
+Cannot be used with aggregate functions like SUM, AVG, etc.
+Can be used with SELECT, UPDATE, and DELETE statements.
+
+HAVING Clause:
+Used for group-level filtering after grouping and aggregation.
+Applies conditions to groups of rows based on aggregate functions.
+Must be used with GROUP BY clause (except in rare cases like single-value views).
+Can only be used with SELECT statements.
+
+Example:-
+        -- Using WHERE to filter individual rows
+        SELECT * FROM rentals WHERE rental_price < 500;
+
+        -- Using HAVING to filter groups based on aggregate conditions
+        SELECT city, AVG(rental_price) AS average_rent
+        FROM rentals
+        GROUP BY city
+        HAVING AVG(rental_price) < 2700;
+
+
+Q8. aggregate function with example?
+ANS-
+
+Aggregate functions in SQL are used to summarize data by performing calculations on a set of values and returning a single value. Here are some key aggregate functions along with examples:
+
+COUNT(): Returns the number of rows in a dataset.
+Example: SELECT COUNT(*) FROM employees;
+This query counts all rows in the employees table.
+
+SUM(): Calculates the total sum of a column.
+Example: SELECT SUM(salary) FROM employees;
+This query calculates the total salary of all employees.
+
+AVG(): Finds the average value of a column.
+Example: SELECT AVG(salary) FROM employees;
+This query calculates the average salary of all employees.
+
+MIN() & MAX(): Return the minimum and maximum values in a column.
+Example: SELECT MIN(salary), MAX(salary) FROM employees;
+This query finds the lowest and highest salaries among all employees.
+
+These functions are often used with the GROUP BY clause to analyze data by categories. For example:
+
+            SELECT department, AVG(salary) AS avg_salary
+            FROM employees
+            GROUP BY department;
+
+            This query calculates the average salary for each department.
+
+
+
+Q9. indexing and clustered indexing?
+ANS-
+
+Indexing is a database optimization technique that improves the speed of data retrieval operations on a database table at the cost of additional space and maintenance overhead.
+
+Clustered Indexing:
+A clustered index determines the physical order of data in a table.
+There can only be one clustered index per table since the data rows themselves can only be sorted in one order.
+It is typically created on the primary key of a table, allowing for faster access to data.
+
+Non-Clustered Indexing:
+A non-clustered index creates a separate structure from the data rows, containing pointers to the actual data.
+Multiple non-clustered indexes can exist on a single table, which allows for more flexible querying options.
+
+In summary, clustered indexing affects the actual storage of data, while non-clustered indexing provides additional ways to access that data efficiently.
+
+
+Q10. Normalisation and different types of normal forms?
+ANS-
+
+Normalization and Normal Forms:
+Normalization is a database design process that reduces data redundancy and improves data integrity by organizing data into tables according to specific rules known as normal forms. This process helps avoid inconsistencies during data updates, insertions, and deletions.
+
+Types of Normal Forms:
+
+First Normal Form (1NF): Ensures each cell contains a single value, eliminates repeating groups, and requires a primary key.
+Second Normal Form (2NF): Requires each non-key attribute to depend on the entire primary key.
+Third Normal Form (3NF): Ensures that if a table is in 2NF, and a non-key attribute depends on another non-key attribute, it should be moved to a separate table.
+
+Higher Normal Forms (BCNF, 4NF, 5NF, 6NF): Address more complex dependencies and are less commonly used in practice.
+
+Normalization is crucial for maintaining efficient and reliable databases.
+
+
+
+
+Q11. UNION and UNION ALL operator in SQL?
+ANS-
+
+UNION vs UNION ALL in SQL:
+
+UNION: Combines the result sets of two or more SELECT statements and removes duplicate rows, returning only unique records. It is useful when you need a distinct result set.
+
+UNION ALL: Also combines the result sets but does not remove duplicates, returning all rows including duplicates. It is faster than UNION because it doesn't perform a deduplication step.
+
+Key Points for Interview:
+
+Both require the same number of columns and compatible data types in each SELECT statement.
+
+UNION is ideal for ensuring uniqueness, while UNION ALL is better when you need all data, including duplicates.
+
+
+
+
+Q12. Query to find second higest salary in the table?
+ANS-
+
+SELECT MAX(Salary) 
+FROM Employee 
+WHERE Salary < (SELECT MAX(Salary) FROM Employee);
+
+This query works by first identifying the highest salary using the subquery, then selecting the maximum salary from the remaining records, which is the second-highest salary.
+
+This approach is straightforward and efficient for most databases.
+
+
+
+Q13. Views in SQL?
+ANS-
+
+Definition: A view in SQL is a virtual table based on the result-set of an SQL statement. It does not store data itself but provides a simplified way to access data from one or more tables.
+
+Purpose:
+
+Simplification: Views simplify complex queries by abstracting away joins and subqueries.
+Security: They restrict access to sensitive data by allowing users to see only specific columns or rows.
+Abstraction: Views provide a reusable name for complex queries, making them easier to manage and maintain.
+
+Types:
+
+Simple View: Based on a single table without GROUP BY or functions.
+Complex View: Involves multiple tables, GROUP BY, and functions.
+Inline View: Used in the FROM clause to create temporary tables.
+Materialized View: Physically stores data for faster query performance.
+
+Example:
+
+        CREATE VIEW CustomersInUSA AS
+        SELECT CustomerName, ContactName
+        FROM Customers
+        WHERE Country = 'USA';
+
+        This view allows you to query customers in the USA without accessing the entire Customers table.
+
+
+
+Q14. how can you convert text into data format
+ANS-
+
+The STR_TO_DATE() function in MySQL is used to convert a string representation of a date into a date object based on a specified format. The syntax for this function is:
+
+        STR_TO_DATE(string, format);
+        string: This is the date string you want to convert.
+
+format: This specifies the format of the input string using format specifiers.
+
+Common format specifiers include:
+
+%d: Day of the month (01 to 31)
+%m: Month (01 to 12)
+%Y: Year (four digits)
+%H: Hour (00 to 23)
+%i: Minutes (00 to 59)
+%s: Seconds (00 to 59)
+
+Example Usage
+To convert the string '10-12-2023' into a date:
+
+        sql syntax
+        SELECT STR_TO_DATE('10-12-2023', '%d-%m-%Y');
+        This will return '2023-12-10'.
+
+
+
+Q15. What are triggers in SQL?
+ANS-
+
+A trigger in SQL is a set of instructions that automatically executes in response to specific events on a database table or view, such as INSERT, UPDATE, or DELETE.
+
+Key Points:
+Purpose: Triggers are primarily used to maintain data integrity and enforce business rules.
+
+Components:
+Trigger Event: The specific action that activates the trigger (e.g., INSERT, UPDATE, DELETE).
+Trigger Action: The SQL statements executed when the trigger is fired.
+Trigger Timing: Indicates whether the trigger runs before or after the triggering event.
+
+Types of Triggers:
+
+BEFORE Triggers: Execute prior to the triggering event, often for validation.
+AFTER Triggers: Execute after the event, commonly used for logging.
+INSTEAD OF Triggers: Replace the triggering event, useful for views.
+
+Triggers help automate processes and ensure that certain conditions are met within the database operations
