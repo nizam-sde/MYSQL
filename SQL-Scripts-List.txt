@@ -1,0 +1,24 @@
+CREATE TABLE School;                -           to create TABLE
+USE TABLE School;                   -           to use TABLE for working & analysis
+SELECT * FROM School;               -           to print all the data from table 
+DROP TABLE School;                  -           to delete the table
+RENAME TABLE School to Students;    -           to rename the table name
+-- RENAME TABLE School to Students; -           to ignore any script
+
+ALTER TABLE Students ADD column                 by altering existing table and adding a
+is_active BOOLEAN DEFAULT true;     -           new column to it and default nature true by itself.
+
+ALTER TABLE Students DROP
+column is_active;                   -           to delete a column from table
+
+ALTER TABLE Students MODIFY
+column name VARCHAR(150);           -           to MODIFY a column TYPE
+
+ALTER TABLE Students MODIFY column
+email VARCHAR(100) AFTER Id;        -           to rearrange column placments
+
+ALTER TABLE Students MODIFY column
+DOB DATETIME FIRST;                 -           to rearrange column placment to FIRST
+
+INSERT INTO Students VALUES
+(1, 'Nizam', 'a@a.com', 'Male', DEFAULT) -      to INSERT data in the TABLE
